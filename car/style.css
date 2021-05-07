@@ -1,0 +1,54 @@
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css";
+
+
+.card{
+    border: none;
+    outline: none;
+    background: rgb(240, 240, 243);
+    border-radius: 30px;
+    transition: transform .3s;
+}
+.card:hover{
+    transform: translateY(-15px);
+    transition: transform .3s;
+}   
+.text1{
+    font-size: 20px;
+    color: rgb(248, 7, 7);
+}
+.info{
+    line-height: 17px;
+    color:rgb(99, 7, 99);
+}
+.star{
+    color: yellow;
+}
+/*card1*/
+.cost span{
+    color: #fb3531;
+    font-weight: bold;
+    font-size: 20px;
+}
+.shoe{
+    background: #dc3545;
+}
+/*card2*/
+.watchcost span{
+    color: #286783;
+    font-weight: bold;
+    font-size: 20px;
+}   
+.watch{
+    background: #286783;
+}
+
+/*product*/
+.watch:hover,.shoe:hover{
+    opacity: .8;
+}
+
+.cursor{
+    cursor: pointer;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}

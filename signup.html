@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Car Shop</title>
+      
+      </head>
+<style>
+	$font-family:   "Roboto";
+$font-size:     14px;
+
+$color-primary: #ABA194;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;    
+    
+    background: url(audi.jpg) no-repeat 50% 50%;
+    
+}
+
+.user {
+    width: 90%;
+    max-width: 340px;
+    margin: 10vh auto;
+}
+
+.user__header {
+    text-align: center;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.7s forwards;
+}
+
+.user__title {
+    font-size: $font-size;
+    margin-bottom: -10px;
+    font-weight: 500;
+    color: white;
+}
+
+.form {
+    margin-top: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.9s forwards;
+}
+
+.form--no {
+    animation: NO 1s ease-in-out;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+    
+    &:focus {
+        background: darken(rgb(155, 139, 139), 3%);
+    }
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    outline: 0;
+    border: 0;
+    color: white;
+    background: $color-primary;
+    transition: 0.3s;
+    
+    &:hover {
+        background: darken($color-primary, 5%);
+    }
+}
+
+@keyframes NO {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes arrive {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 50px, 0);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0
+    }
+
+    50% {
+        background-position: 100% 0
+    }
+
+    100% {
+        background-position: 0 0
+    }
+}
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 50px;
+    padding: 0;
+}
+
+nav ul li {
+    --c: rgb(118, 119, 76);
+    color: var(--c);
+    font-size: 16px;
+    border: 0.3em solid var(--c);
+    border-radius: 0.5em;
+    width: 12em;
+    height: 3em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    line-height: 3em;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: 0.5s;
+    margin: 1em;
+}
+
+nav ul li span {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    background-color: var(--c);
+    transform: translateY(150%);
+    border-radius: 50%;
+    left: calc((var(--n) - 1) * 25%);
+    transition: 0.5s;
+    transition-delay: calc((var(--n) - 1) * 0.1s);
+    z-index: -1;
+}
+
+nav ul li:hover {
+    color: black;
+}
+
+nav ul li:hover span {
+    transform: translateY(0) scale(2);
+}
+
+nav ul li span:nth-child(1) {
+    --n: 1;
+}
+
+nav ul li span:nth-child(2) {
+    --n: 2;
+}
+
+nav ul li span:nth-child(3) {
+    --n: 3;
+}
+
+nav ul li span:nth-child(4) {
+    --n: 4;
+}
+
+</style>
+
+<body>
+
+	<div class="user">
+        <header class="user__header">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+            <h1 class="user__title">CAR SHOP REGISTRATION</h1>
+        </header>
+        
+        <form action="store.jsp" method="post" class="form">
+            <div class="form__group">
+                <input id="name" type="text" placeholder="Username" name="rname" class="form__input" />
+            </div>
+            
+            <div class="form__group">
+                <input id="email" type="email" placeholder="Email" name="remail" class="form__input" />
+            </div>
+
+            <div class="form__group">
+                <input type="number" placeholder="Mobile number" name="mobile" class="form__input" />
+            </div>
+            
+            <div class="form__group">
+                <input type="password" required placeholder="Password" name="pass" class="form__input" />
+            </div>
+            <nav>
+                <ul>
+                  <li onclick="validatesignup()">
+                    <a href="car/index.html"> Create</a>
+                  </li>
+            </nav>
+            
+        </form>
+    </div>
+    <script>
+        function validatesignup()
+{
+    var nam= document.getElementById("name");
+    letters=/^[A-Za-z]+$/;
+    if(nam.value=="")
+    window.alert("Username must not empty");
+    else if(!letters.test(nam.value))
+
+    var em= document.getElementById("email");
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(em.value))
+    {
+        return (true)
+    }
+    else
+    window.alert("You have entered an invalid email address!");
+
+    var psw=document.getElementById("pswd")
+    if(psw.length<9)
+    window.alert("password must be 8 characters");
+}
+    </script>
+</body>
+
+</html>

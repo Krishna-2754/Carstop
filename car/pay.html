@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {
+      font-family: Arial;
+      font-size: 17px;
+      padding: 8px;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .row {
+      display: -ms-flexbox; /* IE10 */
+      display: flex;
+      -ms-flex-wrap: wrap; /* IE10 */
+      flex-wrap: wrap;
+      margin: 0 -16px;
+    }
+    
+    .col-25 {
+      -ms-flex: 25%; /* IE10 */
+      flex: 25%;
+    }
+    
+    .col-50 {
+      -ms-flex: 50%; /* IE10 */
+      flex: 50%;
+    }
+    
+    .col-75 {
+      -ms-flex: 75%; /* IE10 */
+      flex: 75%;
+    }
+    
+    .col-25,
+    .col-50,
+    .col-75 {
+      padding: 0 16px;
+    }
+    
+    .container {
+      background-color: #f2f2f2;
+      padding: 5px 20px 15px 20px;
+      border: 1px solid rgb(83, 86, 233);
+      border-radius: 3px;
+    }
+    
+    input[type=text] {
+      width: 50%;
+      margin-bottom: 20px;
+      padding: 12px;
+      border: 1px solid rgb(77, 108, 245);
+      border-radius: 3px;
+    }
+    
+    label {
+      margin-bottom: 10px;
+      display: block;
+    }
+    
+    .icon-container {
+      margin-bottom: 20px;
+      padding: 7px 0;
+      font-size: 24px;
+    }
+    
+    .btn {
+      background-color: #726ba7;
+      color: white;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      width: 25%;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 17px;
+    }
+    
+    .btn:hover {
+      background-color: #8bd2e7;
+    }
+    
+    a {
+      color: #2196F3;
+    }
+    
+    hr {
+      border: 1px solid lightgrey;
+    }
+    
+    span.price {
+      float: right;
+      color: grey;
+    }
+    
+    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+    @media (max-width: 800px) {
+      .row {
+        flex-direction: column-reverse;
+      }
+      .col-25 {
+        margin-bottom: 20px;
+      }
+    }
+    
+    .fadeIn.fourth {
+      -webkit-animation-delay: 1s;
+      -moz-animation-delay: 1s;
+      animation-delay: 1s;
+    }
+    
+    .wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column; 
+      justify-content: center;
+      width: 100%;
+      min-height: 100%;
+      padding: 20px;
+    }
+    /* Simple CSS3 Fade-in-down Animation */
+    .fadeInDown {
+      -webkit-animation-name: fadeInDown;
+      animation-name: fadeInDown;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    
+    #formContent {
+      -webkit-border-radius: 10px 10px 10px 10px;
+      border-radius: 10px 10px 10px 10px;
+      background: #fff;
+      padding: 30px;
+      width: 90%;
+      max-width: 450px;
+      position: relative;
+      padding: 0px;
+      -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    
+    
+    </style>
+    </head>
+<body>
+    <form action="verify.jsp" onSubmit="return formValidation();">
+    <div class="col-50">
+        <center><h3>Payment</h3></center>
+        <label for="fname">Accepted Cards</label>
+        <div class="icon-container">
+          <i class="fa fa-cc-visa" style="color:navy;"></i>
+          <i class="fa fa-cc-amex" style="color:blue;"></i>
+          <i class="fa fa-cc-mastercard" style="color:red;"></i>
+          <i class="fa fa-cc-discover" style="color:orange;"></i>
+        </div>
+        <label for="cname">Email</label>
+        <input type="email" id="cemail" name="cardemail" placeholder="">
+        <label for="cname">Name on Card</label>
+        <input type="text" id="cname" name="cardname" placeholder="">
+        <label for="ccnum">Credit card number</label>
+        <input type="password" id="ccnum" name="cardnumber" placeholder="">
+        <label for="expmonth">Exp Month</label>
+        <input type="text" id="expmonth" name="expmonth" placeholder="">
+        <label for="expmonth">Enter Amount You want to pay</label>
+        <input type="text" id="camt" name="amt" placeholder="">
+        <div class="row">
+          <div class="col-50">
+            <label for="expyear">Exp Year</label>
+            <input type="text" id="expyear" name="expyear" placeholder="">
+          </div>
+          <div class="col-50">
+            <label for="cvv">CVV</label>
+            <input type="password" id="cvv" name="cvv" placeholder="">
+          </div>
+        </div>
+        <center><input formaction="verify.jsp" type="submit" value="Pay" class="btn"></center>
+      </div>
+      </form>
+      <script>
+        function formValidation()
+        {
+            var name = document.getElementById('cemail');
+            var email = document.getElementById('cname');
+            var card = document.getElementById('ccnum');
+            var month = document.getElementById('expmonth');
+            var amt = document.getElementById('camt');
+            var year = document.getElementById('expyear');
+            var cvv = document.getElementById('cvv');
+
+            var patt1 = /[0-9!@#$%^&*()]/;
+            var patt2 = /[#$%^&*()]/;
+            var patt3 = /@gmail.com|@yahoo.com|@outlook.com|@kluniversity.in/;
+            if(name.value=="" || email.value=="" || card.value=="" || month.value=="" || amt.value=="" || year.value=="" || cvv.value=="")
+            window.alert("Fields Must not be empty!!!");
+            if(pass1.value!=pass2.value)
+            {
+            window.alert("password must be same!!!");
+            return false;
+            }
+            if(patt1.test(name.value))
+            {
+            window.alert("Name must not contain any symbols!!!");
+            return false;
+            }
+            if(patt2.test(email.value) || !patt3.test(email.value))
+            {
+            window.alert("Invalid email id");
+            return false;
+            }
+            if(card.value.length<12)
+            {
+            window.alert("card number must have 12digits");
+            return false;
+            }
+            if(month.value.length!=2)
+            {
+            window.alert("invalid month");
+            return false;
+            }
+            if(year.value.length!=2)
+            {
+            window.alert("invalid year");
+            return false;
+            }
+            if(cvv.value.length!=3)
+            {
+            window.alert("invalid cvv");
+            return false;
+            }
+            if(patt2.test(mobile.value))
+            {
+            window.alert();
+            return false;
+            }
+            return true;
+        }
+       
+
+    </script>
+</body>
